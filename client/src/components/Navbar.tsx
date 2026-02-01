@@ -29,7 +29,7 @@ export function Navbar() {
                 className="h-12 w-auto relative z-10 transition-transform duration-300 group-hover:scale-110" 
               />
             </div>
-            <span className="text-2xl font-bold tracking-wider text-white font-display group-hover:text-primary transition-colors duration-300">
+            <span className="text-2xl font-bold tracking-wider text-primary font-display transition-colors duration-300">
               PROBOT
             </span>
           </Link>
