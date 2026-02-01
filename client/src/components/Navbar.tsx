@@ -1,7 +1,7 @@
 import { Link, useLocation } from "wouter";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import logoImg from "@assets/Untitled-2_1769976217883.png";
+import logoImg from "@assets/Untitled-2-01_1769976613929.png";
 import { Menu, X } from "lucide-react";
 
 export function Navbar() {

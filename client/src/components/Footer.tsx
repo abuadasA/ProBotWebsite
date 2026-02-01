@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import logoImg from "@assets/Untitled-2_1769976217883.png";
+import logoImg from "@assets/Untitled-2-01_1769976613929.png";
 import { FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa";
 
 export function Footer() {
