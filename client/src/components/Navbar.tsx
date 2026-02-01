@@ -1,7 +1,7 @@
 import { Link, useLocation } from "wouter";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import logoImg from "@assets/Untitled-2-01_1769976613929.png";
+import logoImg from "@assets/Untitled-2_1769976217883.png";
 import { Menu, X } from "lucide-react";
 
 export function Navbar() {
@@ -22,15 +22,17 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative">
-              <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute left-1/2 top-1/2 w-[140px] h-[40px] -translate-x-1/2 -translate-y-1/2 bg-[#00E5FF]/30 blur-lg opacity-0 group-hover:opacity-50 transition-all duration-500" />
+
+
               <img 
                 src={logoImg} 
                 alt="ProBot Logo" 
-                className="h-12 w-auto relative z-10 transition-transform duration-300 group-hover:scale-110" 
+                className="h-[130px] w-auto relative z-10 transition-transform duration-300 group-hover:scale-110" 
               />
             </div>
             <span className="text-2xl font-bold tracking-wider text-primary font-display transition-colors duration-300">
-              PROBOT
+              
             </span>
           </Link>
 
