@@ -40,8 +40,8 @@ useEffect(() => {
             transition={{ duration: 1, ease: "easeInOut" }}
           >
             <img src={logoImg2} className="w-screen h-full object-cover object-center" />
-            <img src={logoImg}  className="w-screen h-full object-cover object-top" />
             <img src={logoImg4} className="w-screen h-full object-cover object-center" />
+            <img src={logoImg}  className="w-screen h-full object-cover object-top" />
             <img src={logoImg3} className="w-screen h-full object-cover" style={{ objectPosition: "10% 60%" }} />
 
           </motion.div>
@@ -180,36 +180,30 @@ useEffect(() => {
         </div>
       </section>
 
-      {/* FEATURES GRID */}
+      {/* INSTAGRAM REELS SECTION */}
       <section className="py-24 bg-card/30 relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
         
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-12">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white font-display mb-12">
+            Specialized in <span className="text-primary">SUMO Robotics</span>
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { 
-                icon: Globe, 
-                title: "Global Connectivity", 
-                desc: "Real-time monitoring and control from anywhere in the world via our secure cloud infrastructure." 
-              },
-              { 
-                icon: Shield, 
-                title: "Industrial Durability", 
-                desc: "Built with aerospace-grade alloys to withstand the harshest environments and continuous operation." 
-              },
-              { 
-                icon: Zap, 
-                title: "AI Optimization", 
-                desc: "Self-learning algorithms that improve efficiency and predictive maintenance over time." 
-              },
-            ].map((feature, i) => (
-              <div key={i} className="group p-8 border border-white/5 rounded-2xl hover:bg-white/5 hover:border-primary/30 transition-all duration-300">
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 group-hover:bg-primary group-hover:text-black transition-all duration-300">
-                  <feature.icon size={32} />
-                </div>
-                <h3 className="text-2xl font-bold text-white font-display mb-4">{feature.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{feature.desc}</p>
+              "https://www.instagram.com/reel/DSLDkr8gvNT/embed",
+              "https://www.instagram.com/reel/DRSK4mhAq2z/embed",
+              "https://www.instagram.com/reel/DQUmY8sAsxa/embed"
+            ].map((url, i) => (
+              <div key={i} className="relative aspect-[9/16] max-w-[320px] mx-auto w-full rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-500 box-glow group">
+                <iframe
+                  src={url}
+                  className="w-full h-full border-0"
+                  allowTransparency
+                  allow="encrypted-media"
+                />
+                <div className="absolute inset-0 pointer-events-none border-2 border-primary/0 group-hover:border-primary/20 transition-all duration-500 rounded-2xl" />
               </div>
             ))}
           </div>
