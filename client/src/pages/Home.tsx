@@ -186,7 +186,7 @@ useEffect(() => {
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
         
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white font-display mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-white font-display mb-12 uppercase tracking-tight">
             Specialized in <span className="text-primary">SUMO Robotics</span>
           </h2>
           
@@ -196,7 +196,7 @@ useEffect(() => {
               "https://www.instagram.com/reel/DRSK4mhAq2z/embed",
               "https://www.instagram.com/reel/DQUmY8sAsxa/embed"
             ].map((url, i) => (
-              <div key={i} className="relative aspect-[9/16] max-w-[320px] mx-auto w-full rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-500 box-glow group">
+              <div key={i} className="relative aspect-[9/16] max-w-[320px] mx-auto w-full rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-500 shadow-2xl hover:shadow-primary/20 group">
                 <iframe
                   src={url}
                   className="w-full h-full border-0"
