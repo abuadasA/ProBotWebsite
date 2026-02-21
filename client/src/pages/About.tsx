@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { FaLinkedin } from "react-icons/fa";
 import profile1 from "../assets/1712093641690.png";
 import profile2 from "../assets/1744717737792.jpg";
+import aboutus from "../assets/websiteprobot.png";
 import { profile } from "console";
 export default function About() {
   const coFounders = [
@@ -69,7 +70,7 @@ export default function About() {
                 <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full opacity-20 group-hover:opacity-40 transition-opacity" />
                 <div className="relative border border-white/10 rounded-2xl overflow-hidden aspect-video">
                   <img
-                    src="https://images.unsplash.com/photo-1581093588401-22f636bd8c56"
+                    src= {aboutus}
                     alt="ProBot innovation"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />

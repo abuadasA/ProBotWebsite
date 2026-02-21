@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { motion } from "framer-motion";
@@ -15,7 +15,53 @@ import reel2 from "../reels/reel2.mp4"
 import reel3 from "../reels/reel3.mp4"
 import reel4 from "../reels/reel4.mp4"
 
+function Counter({ end, duration = 2000, suffix = "" }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const [start, setStart] = useState(false);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStart(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!start) return;
+
+    let startTime;
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = timestamp - startTime;
+      const progressRatio = Math.min(progress / duration, 1);
+
+      setCount(Math.floor(progressRatio * end));
+
+      if (progress < duration) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [start, end, duration]);
+
+  return (
+    <span ref={ref}>
+      {count}
+      {suffix}
+    </span>
+  );
+}
 
 
 export default function Home() {
@@ -127,21 +173,25 @@ useEffect(() => {
         </div>
       </section>
 
-
+    
 
       {/* STATS SECTION */}
       <section className="py-20 border-y border-white/5 bg-black/50 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { label: "Active Units", value: "500+" },
-              { label: "Countries", value: "32" },
-              { label: "Uptime", value: "99.9%" },
-              { label: "Awards", value: "15" },
+              { label: "Students Trained", value: 150, suffix: "+" },
+              { label: "Robots Built", value: 40, suffix: "+" },
+              { label: "Competitions Won", value: 5, suffix: "+" },
+              { label: "Training Hours", value: 100, suffix: "+" },
             ].map((stat, i) => (
               <div key={i}>
-                <div className="text-4xl md:text-5xl font-bold font-display text-white mb-2">{stat.value}</div>
-                <div className="text-sm text-primary uppercase tracking-widest font-medium">{stat.label}</div>
+                <div className="text-4xl md:text-5xl font-bold font-display text-white mb-2">
+                  <Counter end={stat.value} suffix={stat.suffix} />
+                </div>
+                <div className="text-sm text-primary uppercase tracking-widest font-medium">
+                  {stat.label}
+                </div>
               </div>
             ))}
           </div>
