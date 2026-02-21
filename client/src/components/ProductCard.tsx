@@ -1,10 +1,10 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import type { Product } from "@shared/schema";
-import { ArrowRight, Cpu, Zap, Activity, ChevronDown, ChevronUp } from "lucide-react";
-import { useState } from "react";
+import { ArrowRight, Zap, Activity } from "lucide-react";
+import { useLocation } from "wouter";
 
 export function ProductCard({ product }: { product: Product }) {
-  const [showSpecs, setShowSpecs] = useState(false);
+  const [, setLocation] = useLocation();
   // Parse features safely since they come as JSONB array
   const features = Array.isArray(product.features) ? product.features : [];
 
@@ -44,49 +44,22 @@ export function ProductCard({ product }: { product: Product }) {
           {product.description}
         </p>
 
-        {/* Features Preview (always visible or hidden when specs shown) */}
-        {!showSpecs && (
-          <div className="grid grid-cols-2 gap-3 mb-6">
-            {features.slice(0, 4).map((feature, i) => (
-              <div key={i} className="flex items-center gap-2 text-xs text-gray-300">
-                <Activity size={12} className="text-primary" />
-                <span>{feature}</span>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* Full Specs Section */}
-        <AnimatePresence>
-          {showSpecs && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="overflow-hidden mb-6"
-            >
-              <div className="space-y-3 pt-2 border-t border-white/10">
-                <h4 className="text-sm font-bold text-primary uppercase tracking-widest">Full Specifications</h4>
-                <div className="grid grid-cols-1 gap-2">
-                  {features.map((feature, i) => (
-                    <div key={i} className="flex items-start gap-2 text-xs text-gray-300 bg-white/5 p-2 rounded border border-white/5">
-                      <Activity size={12} className="text-primary mt-0.5 shrink-0" />
-                      <span>{feature}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* Features Preview */}
+        <div className="grid grid-cols-2 gap-3 mb-6">
+          {features.slice(0, 4).map((feature, i) => (
+            <div key={i} className="flex items-center gap-2 text-xs text-gray-300">
+              <Activity size={12} className="text-primary" />
+              <span>{feature}</span>
+            </div>
+          ))}
+        </div>
 
         {/* Action */}
         <button 
-          onClick={() => setShowSpecs(!showSpecs)}
+          onClick={() => setLocation(`/product/${product.id}`)}
           className="w-full py-3 flex items-center justify-center gap-2 rounded-lg bg-white/5 border border-white/10 text-white font-medium group-hover:bg-primary group-hover:text-black group-hover:border-primary transition-all duration-300"
         >
-          {showSpecs ? "CLOSE SPECS" : "VIEW SPECS"} 
-          {showSpecs ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+          VIEW SPECS <ArrowRight size={16} />
         </button>
       </div>
     </motion.div>
