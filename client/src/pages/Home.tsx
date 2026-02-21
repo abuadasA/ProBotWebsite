@@ -7,10 +7,13 @@ import { ArrowRight, Cpu, Globe, Shield, Zap } from "lucide-react";
 import { useProducts } from "@/hooks/use-products";
 import { ProductCard } from "@/components/ProductCard";
 import logoImg from "@assets/heroimage.png";
-import logoImg2 from "@assets/heroimage2.jpeg";
-import logoImg3 from "@assets/heroimage3.jpeg";
-import logoImg4 from "@assets/heroimage5.jpeg";
+import logoImg2 from "@assets/heroimage1.png";
+import logoImg3 from "@assets/heroimage3.png";
 
+import reel1 from "../reels/reel1.mp4"
+import reel2 from "../reels/reel2.mp4"
+import reel3 from "../reels/reel3.mp4"
+import reel4 from "../reels/reel4.mp4"
 
 
 
@@ -39,10 +42,10 @@ useEffect(() => {
             animate={{ x: `-${active * 100}vw` }}
             transition={{ duration: 1, ease: "easeInOut" }}
           >
-            <img src={logoImg2} className="w-screen h-full object-cover object-center" />
-            <img src={logoImg4} className="w-screen h-full object-cover object-center" />
+            <img src={logoImg3} className="w-screen h-full object-cover" />
             <img src={logoImg}  className="w-screen h-full object-cover object-top" />
-            <img src={logoImg3} className="w-screen h-full object-cover" style={{ objectPosition: "10% 60%" }} />
+            <img src={logoImg2} className="w-screen h-full object-cover object-center" />
+         
 
           </motion.div>
 
@@ -182,33 +185,81 @@ useEffect(() => {
 
       {/* INSTAGRAM REELS SECTION */}
       <section className="py-24 bg-card/30 relative overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-        
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white font-display mb-12 uppercase tracking-tight">
-            Specialized in <span className="text-primary">SUMO Robotics</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white font-display mb-6 tracking-tight normal-case">
+            Specialized in <span className="text-primary uppercase">SUMO Robots</span>
           </h2>
+
+          <p className="text-sm md:text-base text-gray-400 font-medium tracking-wide mb-8">
+            🇯🇴 The first company in Jordan specialized in sumo kits, parts, and frame kits
+          </p>
+
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-10 place-items-center">
             {[
-              "https://www.instagram.com/reel/DSLDkr8gvNT/embed",
-              "https://www.instagram.com/reel/DRSK4mhAq2z/embed",
-              "https://www.instagram.com/reel/DQUmY8sAsxa/embed"
-            ].map((url, i) => (
-              <div key={i} className="relative aspect-[9/16] max-w-[320px] mx-auto w-full rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-500 shadow-2xl hover:shadow-primary/20 group">
-                <iframe
-                  src={url}
-                  className="w-full h-full border-0"
-                  allowTransparency
-                  allow="encrypted-media"
+              {
+                video: reel1,
+                link: "https://www.instagram.com/reel/DSLDkr8gvNT/",
+              },
+              {
+                video: reel2,
+                link: "https://www.instagram.com/reel/DRSK4mhAq2z/",
+              },
+              {
+                video: reel3,
+                link: "https://www.instagram.com/reel/DQUmY8sAsxa/",
+              },
+              {
+                video: reel4,
+                link: "https://www.instagram.com/reel/DMdhvXzs-zn/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+              },
+            ].map((reel, i) => (
+              <a
+                key={i}
+                href={reel.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative aspect-[9/16] w-full max-w-[280px]
+                           rounded-3xl overflow-hidden
+                           border border-white/10
+                           shadow-xl
+                           transition-all duration-500
+                           hover:-translate-y-3 hover:shadow-primary/40"
+              >
+                {/* Autoplay video preview */}
+                <video
+                  src={reel.video}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 pointer-events-none border-2 border-primary/0 group-hover:border-primary/20 transition-all duration-500 rounded-2xl" />
-              </div>
+
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+
+                {/* Play hint */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md
+                                  flex items-center justify-center text-white text-xl">
+                    ▶
+                  </div>
+                </div>
+
+                {/* Label */}
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-xs text-white/70">
+                  Watch on Instagram
+                </div>
+              </a>
             ))}
           </div>
         </div>
       </section>
+
+
 
       <Footer />
     </div>
