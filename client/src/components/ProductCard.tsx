@@ -7,6 +7,9 @@ export function ProductCard({ product }: { product: Product }) {
   const [, setLocation] = useLocation();
   // Parse features safely since they come as JSONB array
   const features = Array.isArray(product.features) ? product.features : [];
+  // Get the first image from imageUrls array
+  const imageUrls = Array.isArray(product.imageUrls) ? product.imageUrls : [];
+  const primaryImage = imageUrls[0] || "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80";
 
   return (
     <motion.div 
@@ -24,7 +27,7 @@ export function ProductCard({ product }: { product: Product }) {
       <div className="relative h-64 overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
         <img 
-          src={product.imageUrl} 
+          src={primaryImage} 
           alt={product.name}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
         />

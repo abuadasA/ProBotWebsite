@@ -49,25 +49,45 @@ export async function registerRoutes(
       await storage.createProduct({
         name: "ProBot Arm X1",
         description: "High-precision industrial robotic arm with 6 degrees of freedom. Perfect for assembly and pick-and-place operations.",
-        imageUrl: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80",
+        imageUrls: [
+          "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80",
+          "https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=800&q=80",
+          "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+          "https://images.unsplash.com/photo-1611696351133-f9e3e5f8ac5e?w=800&q=80"
+        ],
         features: ["6 Degrees of Freedom", "0.05mm Repeatability", "5kg Payload Capacity", "EtherCAT Support"]
       });
       await storage.createProduct({
         name: "Rover Alpha",
         description: "Autonomous exploration rover designed for rugged terrains. Equipped with LiDAR and depth cameras.",
-        imageUrl: "https://images.unsplash.com/photo-1534723328310-e82dad3ee43f?w=800&q=80",
+        imageUrls: [
+          "https://images.unsplash.com/photo-1534723328310-e82dad3ee43f?w=800&q=80",
+          "https://images.unsplash.com/photo-1536373968597-723e13b232f3?w=800&q=80",
+          "https://images.unsplash.com/photo-1573496169361-461a386b60b9?w=800&q=80",
+          "https://images.unsplash.com/photo-1599958268343-b8b0c3d29e13?w=800&q=80"
+        ],
         features: ["Autonomous Navigation", "LiDAR Mapping", "4-Hour Battery Life", "Rugged Wheels"]
       });
       await storage.createProduct({
         name: "Drone S-Type",
         description: "Compact surveillance drone with 4K camera and AI-powered object tracking.",
-        imageUrl: "https://images.unsplash.com/photo-1579829366248-204fe8413f31?w=800&q=80",
+        imageUrls: [
+          "https://images.unsplash.com/photo-1579829366248-204fe8413f31?w=800&q=80",
+          "https://images.unsplash.com/photo-1508444845599-4d8d36e01d47?w=800&q=80",
+          "https://images.unsplash.com/photo-1511884642898-4c92249e20b6?w=800&q=80",
+          "https://images.unsplash.com/photo-1450526485693-c0d9b1e3e6a8?w=800&q=80"
+        ],
         features: ["4K HDR Camera", "30min Flight Time", "AI Object Tracking", "Obstacle Avoidance"]
       });
       await storage.createProduct({
         name: "EduKit Pro",
         description: "Complete robotics kit for education and research. Includes servo motors, sensors, and a programmable controller.",
-        imageUrl: "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?w=800&q=80",
+        imageUrls: [
+          "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?w=800&q=80",
+          "https://images.unsplash.com/photo-1637829099317-3ee3a0f0d20d?w=800&q=80",
+          "https://images.unsplash.com/photo-1592640831399-c4c7f2d3e308?w=800&q=80",
+          "https://images.unsplash.com/photo-1599583863696-4de9b2ba0344?w=800&q=80"
+        ],
         features: ["Programmable Controller", "12 Servo Motors", "Distance Sensors", "Python API"]
       });
     }

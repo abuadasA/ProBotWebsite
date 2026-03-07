@@ -6,7 +6,7 @@ export const products = pgTable("products", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
   description: text("description").notNull(),
-  imageUrl: text("image_url").notNull(),
+  imageUrls: jsonb("image_urls").$type<string[]>().notNull(),
   features: jsonb("features").$type<string[]>().notNull(),
 });
 

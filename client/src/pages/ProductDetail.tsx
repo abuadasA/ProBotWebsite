@@ -39,8 +39,7 @@ export default function ProductDetail() {
   }
 
   const features = Array.isArray(product.features) ? product.features : [];
-  // For now, show the single image. In future, this can be extended to multiple images
-  const productImages = [product.imageUrl];
+  const productImages = Array.isArray(product.imageUrls) ? product.imageUrls : [];
 
   return (
     <div className="min-h-screen bg-background text-foreground">
