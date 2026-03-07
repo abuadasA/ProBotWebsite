@@ -2,15 +2,16 @@ import { useRoute } from "wouter";
 import { useProducts } from "@/hooks/use-products";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { ImageCarousel } from "@/components/ImageCarousel";
 import { motion } from "framer-motion";
-import { Activity, Cpu, Zap, ArrowLeft, Shield, Globe } from "lucide-react";
+import { Activity, Zap, ArrowLeft, Check, Truck, Shield, RotateCcw } from "lucide-react";
 import { Link } from "wouter";
 
 export default function ProductDetail() {
   const [, params] = useRoute("/product/:id");
   const { data: products, isLoading } = useProducts();
-  
-  const product = products?.find(p => p.id === parseInt(params?.id || "0"));
+
+  const product = products?.find((p) => p.id === parseInt(params?.id || "0"));
 
   if (isLoading) {
     return (
@@ -29,108 +30,271 @@ export default function ProductDetail() {
         <Navbar />
         <div className="container mx-auto px-4 py-32 text-center">
           <h1 className="text-4xl font-bold mb-4">Product Not Found</h1>
-          <Link href="/products" className="text-primary hover:underline">Back to Products</Link>
+          <Link href="/products" className="text-primary hover:underline">
+            Back to Products
+          </Link>
         </div>
       </div>
     );
   }
 
   const features = Array.isArray(product.features) ? product.features : [];
+  // For now, show the single image. In future, this can be extended to multiple images
+  const productImages = [product.imageUrl];
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
-      
-      <main className="pt-32 pb-20">
-        <div className="container mx-auto px-4">
-          <Link href="/products" className="inline-flex items-center gap-2 text-primary hover:text-white transition-colors uppercase font-bold tracking-widest text-sm mb-12">
-            <ArrowLeft size={16} /> Back to Products
+
+      <main className="pt-24 pb-20">
+        <div className="container mx-auto px-4 lg:px-6">
+          {/* Breadcrumb */}
+          <Link href="/products">
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-12 cursor-pointer text-sm"
+            >
+              <ArrowLeft size={16} />
+              <span>Back to Products</span>
+            </motion.div>
           </Link>
 
-          <div className="grid lg:grid-cols-2 gap-16">
-            {/* Product Visuals */}
+          {/* Main Product Section */}
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 mb-20">
+            {/* Left: Image Carousel (Sticky on Desktop) */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
+              initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="relative rounded-3xl overflow-hidden border border-white/10 aspect-square lg:aspect-auto lg:h-[600px]"
+              transition={{ duration: 0.4 }}
+              className="lg:sticky lg:top-32 lg:h-fit"
             >
-              <img 
-                src={product.imageUrl} 
-                alt={product.name}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-              <div className="absolute bottom-8 left-8">
-                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/30 text-primary text-sm font-bold font-display uppercase tracking-wider backdrop-blur-md mb-4">
-                  <Zap size={16} /> Series X Advanced
-                </span>
-                <h1 className="text-5xl md:text-6xl font-extrabold text-white font-display uppercase tracking-tight">
-                  {product.name}
-                </h1>
-              </div>
+              <ImageCarousel images={productImages} productName={product.name} />
             </motion.div>
 
-            {/* Product Info & Specs */}
+            {/* Right: Product Info */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
+              initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
               className="flex flex-col"
             >
-              <div className="mb-12">
-                <h2 className="text-primary font-bold uppercase tracking-[0.2em] text-sm mb-4">Description</h2>
-                <p className="text-xl text-gray-300 leading-relaxed italic">
-                  "{product.description}"
-                </p>
+              {/* Category Badge */}
+              <div className="mb-6">
+                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold font-display uppercase tracking-wider">
+                  <Zap size={14} /> Advanced Series
+                </span>
               </div>
 
-              <div className="grid grid-cols-2 gap-6 mb-12">
-                <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
-                  <Cpu className="text-primary mb-4" size={32} />
-                  <h3 className="text-white font-bold mb-1">Architecture</h3>
-                  <p className="text-sm text-gray-400">Next-gen neural processing</p>
+              {/* Title */}
+              <h1 className="text-4xl lg:text-5xl font-black font-display text-white mb-4 leading-tight">
+                {product.name}
+              </h1>
+
+              {/* Description */}
+              <p className="text-lg text-gray-300 leading-relaxed mb-8">
+                {product.description}
+              </p>
+
+              {/* Price Section */}
+              <div className="mb-8 pb-8 border-b border-white/10">
+                <p className="text-sm text-gray-400 mb-2">STARTING PRICE</p>
+                <div className="flex items-baseline gap-3">
+                  <span className="text-4xl font-bold text-white">$24,999</span>
+                  <span className="text-gray-400 line-through text-lg">$29,999</span>
                 </div>
-                <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
-                  <Shield className="text-primary mb-4" size={32} />
-                  <h3 className="text-white font-bold mb-1">Security</h3>
-                  <p className="text-sm text-gray-400">Military-grade protection</p>
+                <p className="text-sm text-primary mt-2 font-medium">Save $5,000 • Limited offer</p>
+              </div>
+
+              {/* Key Features Highlights */}
+              <div className="grid grid-cols-3 gap-4 mb-8 lg:mb-12">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Check size={18} className="text-primary" />
+                  </div>
+                  <span className="text-sm font-medium text-gray-300">In Stock</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Truck size={18} className="text-primary" />
+                  </div>
+                  <span className="text-sm font-medium text-gray-300">Free Shipping</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    <RotateCcw size={18} className="text-primary" />
+                  </div>
+                  <span className="text-sm font-medium text-gray-300">30-Day Return</span>
                 </div>
               </div>
 
-              <div>
-                <h2 className="text-primary font-bold uppercase tracking-[0.2em] text-sm mb-6 border-b border-white/10 pb-4">
-                  Full Technical Specifications
-                </h2>
-                <div className="grid gap-4">
-                  {features.map((feature, i) => (
-                    <motion.div 
-                      key={i}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.1 }}
-                      className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-primary/30 transition-colors group"
-                    >
-                      <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-black transition-colors">
-                        <Activity size={20} />
-                      </div>
-                      <span className="text-gray-200 font-medium">{feature}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mt-12 flex gap-4">
-                <Link href="/contact">
-                  <button className="px-8 py-4 bg-primary text-black font-bold rounded-lg hover:bg-white transition-all transform hover:scale-105 box-glow">
-                    INQUIRE NOW
-                  </button>
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                <Link href="/contact" className="flex-1">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full px-8 py-4 bg-primary text-black font-bold text-lg rounded-xl hover:bg-white transition-all box-glow uppercase tracking-wide"
+                  >
+                    Request Quote
+                  </motion.button>
                 </Link>
-                <div className="flex items-center gap-3 px-6 py-4 rounded-lg border border-white/10 text-gray-400">
-                  <Globe size={20} />
-                  <span className="text-sm font-medium">Global Support Available</span>
-                </div>
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-8 py-4 border-2 border-white/20 text-white font-bold rounded-xl hover:border-white/50 transition-all uppercase tracking-wide"
+                >
+                  Add to Wishlist
+                </motion.button>
+              </div>
+
+              {/* Trust Badges */}
+              <div className="p-4 rounded-xl bg-white/5 border border-white/10">
+                <p className="text-xs text-gray-400 uppercase tracking-wide font-semibold mb-3">
+                  Why Choose This Product
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-3 text-sm text-gray-300">
+                    <Shield size={16} className="text-primary mt-0.5 shrink-0" />
+                    <span>Military-grade security and reliability</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-sm text-gray-300">
+                    <Zap size={16} className="text-primary mt-0.5 shrink-0" />
+                    <span>Industry-leading performance metrics</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-sm text-gray-300">
+                    <Truck size={16} className="text-primary mt-0.5 shrink-0" />
+                    <span>Global support and maintenance</span>
+                  </li>
+                </ul>
               </div>
             </motion.div>
           </div>
+
+          {/* Specs & Features Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="space-y-16"
+          >
+            {/* Features Section */}
+            <div className="border-t border-white/10 pt-16">
+              <h2 className="text-3xl lg:text-4xl font-black font-display text-white mb-12">
+                Key <span className="text-primary">Features</span>
+              </h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                {features.map((feature, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="group p-6 rounded-xl bg-gradient-to-br from-white/5 to-white/2 border border-white/10 hover:border-primary/50 transition-all"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-black transition-all shrink-0">
+                        <Activity size={24} />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-bold text-white mb-2">{feature.split(":")[0]}</h3>
+                        <p className="text-gray-400 text-sm">{feature.split(":")[1] || "Premium feature included"}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Technical Specifications */}
+            <div className="border-t border-white/10 pt-16">
+              <h2 className="text-3xl lg:text-4xl font-black font-display text-white mb-12">
+                Technical <span className="text-primary">Specifications</span>
+              </h2>
+              <div className="grid gap-4">
+                {[
+                  { label: "Model", value: product.name },
+                  { label: "Category", value: "Advanced Robotics System" },
+                  { label: "Dimensions", value: "Custom Configuration Available" },
+                  { label: "Weight", value: "Varies by Configuration" },
+                  { label: "Operating Voltage", value: "100-240V AC, 50-60Hz" },
+                  { label: "Warranty", value: "2 Years Standard + Extended Options" },
+                ].map((spec, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.05 }}
+                    className="grid md:grid-cols-3 gap-4 items-center p-4 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+                  >
+                    <span className="font-semibold text-white text-sm uppercase tracking-wide">
+                      {spec.label}
+                    </span>
+                    <span className="md:col-span-2 text-gray-300">{spec.value}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Support & Resources */}
+            <div className="border-t border-white/10 pt-16 border-b pb-16">
+              <h2 className="text-3xl lg:text-4xl font-black font-display text-white mb-12">
+                Support & <span className="text-primary">Resources</span>
+              </h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                <motion.div
+                  whileHover={{ y: -5 }}
+                  className="p-8 rounded-xl bg-gradient-to-br from-primary/10 to-transparent border border-primary/20 text-center"
+                >
+                  <div className="text-4xl mb-4">📚</div>
+                  <h3 className="text-lg font-bold text-white mb-2">Documentation</h3>
+                  <p className="text-gray-400 text-sm">Complete user guides and API reference</p>
+                </motion.div>
+                <motion.div
+                  whileHover={{ y: -5 }}
+                  className="p-8 rounded-xl bg-gradient-to-br from-primary/10 to-transparent border border-primary/20 text-center"
+                >
+                  <div className="text-4xl mb-4">🎓</div>
+                  <h3 className="text-lg font-bold text-white mb-2">Training</h3>
+                  <p className="text-gray-400 text-sm">Comprehensive training programs available</p>
+                </motion.div>
+                <motion.div
+                  whileHover={{ y: -5 }}
+                  className="p-8 rounded-xl bg-gradient-to-br from-primary/10 to-transparent border border-primary/20 text-center"
+                >
+                  <div className="text-4xl mb-4">🔧</div>
+                  <h3 className="text-lg font-bold text-white mb-2">Support</h3>
+                  <p className="text-gray-400 text-sm">24/7 technical support team</p>
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Final CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="py-16 text-center"
+          >
+            <h2 className="text-3xl lg:text-4xl font-black font-display text-white mb-6">
+              Ready to Get Started?
+            </h2>
+            <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
+              Contact our sales team to learn more about this product and get a custom quote for your needs.
+            </p>
+            <Link href="/contact">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-10 py-4 bg-primary text-black font-bold text-lg rounded-xl hover:bg-white transition-all box-glow uppercase tracking-wide"
+              >
+                Contact Sales
+              </motion.button>
+            </Link>
+          </motion.div>
         </div>
       </main>
 
