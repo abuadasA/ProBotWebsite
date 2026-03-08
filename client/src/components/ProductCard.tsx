@@ -49,7 +49,7 @@ export function ProductCard({ product }: { product: Product }) {
 
         {/* Price */}
         <div className="mb-4">
-          <p className="text-3xl font-black text-primary">${(product.price || 0).toLocaleString()}</p>
+          <p className="text-xl font-bold text-primary">${(product.price || 0).toLocaleString()}</p>
         </div>
 
         {/* Features Preview */}
