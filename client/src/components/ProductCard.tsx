@@ -39,13 +39,18 @@ export function ProductCard({ product }: { product: Product }) {
       </div>
 
       {/* Content */}
-      <div className="p-6 relative z-10">
+      <div className="p-6 relative z-10 flex flex-col">
         <h3 className="text-2xl font-bold text-white font-display mb-2 group-hover:text-primary transition-colors">
           {product.name}
         </h3>
-        <p className="text-gray-400 text-sm mb-6 line-clamp-2 h-10">
+        <p className="text-gray-400 text-sm mb-4 line-clamp-2 h-10">
           {product.description}
         </p>
+
+        {/* Price */}
+        <div className="mb-4">
+          <p className="text-3xl font-black text-primary">${(product.price || 0).toLocaleString()}</p>
+        </div>
 
         {/* Features Preview */}
         <div className="grid grid-cols-2 gap-3 mb-6">
@@ -60,7 +65,7 @@ export function ProductCard({ product }: { product: Product }) {
         {/* Action */}
         <button 
           onClick={() => setLocation(`/product/${product.id}`)}
-          className="w-full py-3 flex items-center justify-center gap-2 rounded-lg bg-white/5 border border-white/10 text-white font-medium group-hover:bg-primary group-hover:text-black group-hover:border-primary transition-all duration-300"
+          className="w-full mt-auto py-3 flex items-center justify-center gap-2 rounded-lg bg-white/5 border border-white/10 text-white font-medium group-hover:bg-primary group-hover:text-black group-hover:border-primary transition-all duration-300"
         >
           VIEW SPECS <ArrowRight size={16} />
         </button>
