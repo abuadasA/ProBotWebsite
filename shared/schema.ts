@@ -1,4 +1,4 @@
-import { pgTable, text, serial, jsonb } from "drizzle-orm/pg-core";
+import { pgTable, text, serial, jsonb, integer } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -8,12 +8,13 @@ export const products = pgTable("products", {
   description: text("description").notNull(),
   imageUrls: jsonb("image_urls").$type<string[]>().notNull(),
   features: jsonb("features").$type<string[]>().notNull(),
+  price: integer("price").notNull(),
 });
 
 export const messages = pgTable("messages", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
-  email: text("email").notNull(),
+   email: text("email").notNull(),
   message: text("message").notNull(),
 });
 

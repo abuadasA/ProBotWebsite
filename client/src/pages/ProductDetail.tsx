@@ -99,10 +99,8 @@ export default function ProductDetail() {
               <div className="mb-8 pb-8 border-b border-white/10">
                 <p className="text-sm text-gray-400 mb-2">STARTING PRICE</p>
                 <div className="flex items-baseline gap-3">
-                  <span className="text-4xl font-bold text-white">$24,999</span>
-                  <span className="text-gray-400 line-through text-lg">$29,999</span>
+                  <span className="text-4xl font-bold text-white">${(product.price || 0).toLocaleString()}</span>
                 </div>
-                <p className="text-sm text-primary mt-2 font-medium">Save $5,000 • Limited offer</p>
               </div>
 
               {/* Key Features Highlights */}

@@ -55,7 +55,8 @@ export async function registerRoutes(
           "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
           "https://images.unsplash.com/photo-1611696351133-f9e3e5f8ac5e?w=800&q=80"
         ],
-        features: ["6 Degrees of Freedom", "0.05mm Repeatability", "5kg Payload Capacity", "EtherCAT Support"]
+        features: ["6 Degrees of Freedom", "0.05mm Repeatability", "5kg Payload Capacity", "EtherCAT Support"],
+        price: 24999
       });
       await storage.createProduct({
         name: "Rover Alpha",
@@ -66,7 +67,8 @@ export async function registerRoutes(
           "https://images.unsplash.com/photo-1573496169361-461a386b60b9?w=800&q=80",
           "https://images.unsplash.com/photo-1599958268343-b8b0c3d29e13?w=800&q=80"
         ],
-        features: ["Autonomous Navigation", "LiDAR Mapping", "4-Hour Battery Life", "Rugged Wheels"]
+        features: ["Autonomous Navigation", "LiDAR Mapping", "4-Hour Battery Life", "Rugged Wheels"],
+        price: 18999
       });
       await storage.createProduct({
         name: "Drone S-Type",
@@ -77,7 +79,8 @@ export async function registerRoutes(
           "https://images.unsplash.com/photo-1511884642898-4c92249e20b6?w=800&q=80",
           "https://images.unsplash.com/photo-1450526485693-c0d9b1e3e6a8?w=800&q=80"
         ],
-        features: ["4K HDR Camera", "30min Flight Time", "AI Object Tracking", "Obstacle Avoidance"]
+        features: ["4K HDR Camera", "30min Flight Time", "AI Object Tracking", "Obstacle Avoidance"],
+        price: 12999
       });
       await storage.createProduct({
         name: "EduKit Pro",
@@ -88,7 +91,8 @@ export async function registerRoutes(
           "https://images.unsplash.com/photo-1592640831399-c4c7f2d3e308?w=800&q=80",
           "https://images.unsplash.com/photo-1599583863696-4de9b2ba0344?w=800&q=80"
         ],
-        features: ["Programmable Controller", "12 Servo Motors", "Distance Sensors", "Python API"]
+        features: ["Programmable Controller", "12 Servo Motors", "Distance Sensors", "Python API"],
+        price: 8999
       });
     }
   }
