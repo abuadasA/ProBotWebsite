@@ -56,6 +56,14 @@ export async function registerRoutes(
           "https://images.unsplash.com/photo-1611696351133-f9e3e5f8ac5e?w=800&q=80"
         ],
         features: ["6 Degrees of Freedom", "0.05mm Repeatability", "5kg Payload Capacity", "EtherCAT Support"],
+        technicalSpecs: [
+          { label: "Reach", value: "1400 mm" },
+          { label: "Repeatability", value: "±0.05 mm" },
+          { label: "Maximum Speed", value: "250°/sec" },
+          { label: "Payload Capacity", value: "5 kg" },
+          { label: "Power Supply", value: "48 VDC, 150 A" },
+          { label: "Weight", value: "45 kg" }
+        ],
         price: 24999
       });
       await storage.createProduct({
@@ -68,6 +76,14 @@ export async function registerRoutes(
           "https://images.unsplash.com/photo-1599958268343-b8b0c3d29e13?w=800&q=80"
         ],
         features: ["Autonomous Navigation", "LiDAR Mapping", "4-Hour Battery Life", "Rugged Wheels"],
+        technicalSpecs: [
+          { label: "Max Speed", value: "1.2 m/s" },
+          { label: "Battery Capacity", value: "48V 100Ah" },
+          { label: "Operating Temperature", value: "-10°C to 50°C" },
+          { label: "Dimensions", value: "1200 x 900 x 600 mm" },
+          { label: "Weight", value: "75 kg" },
+          { label: "LiDAR Range", value: "120 m" }
+        ],
         price: 18999
       });
       await storage.createProduct({
@@ -80,6 +96,14 @@ export async function registerRoutes(
           "https://images.unsplash.com/photo-1450526485693-c0d9b1e3e6a8?w=800&q=80"
         ],
         features: ["4K HDR Camera", "30min Flight Time", "AI Object Tracking", "Obstacle Avoidance"],
+        technicalSpecs: [
+          { label: "Camera Resolution", value: "4K 30fps" },
+          { label: "Flight Time", value: "30 minutes" },
+          { label: "Max Flight Speed", value: "20 m/s" },
+          { label: "Operating Range", value: "10 km" },
+          { label: "Battery Type", value: "LiPo 7500 mAh" },
+          { label: "Weight", value: "1250 g" }
+        ],
         price: 12999
       });
       await storage.createProduct({
@@ -92,6 +116,14 @@ export async function registerRoutes(
           "https://images.unsplash.com/photo-1599583863696-4de9b2ba0344?w=800&q=80"
         ],
         features: ["Programmable Controller", "12 Servo Motors", "Distance Sensors", "Python API"],
+        technicalSpecs: [
+          { label: "Processor", value: "ARM Cortex-M4" },
+          { label: "Memory", value: "256 KB Flash, 64 KB RAM" },
+          { label: "Servo Motors", value: "12x High-Torque" },
+          { label: "Power Input", value: "5-12V DC" },
+          { label: "Sensors Included", value: "10x Digital, 4x Analog" },
+          { label: "Programming Language", value: "Python 3.8+" }
+        ],
         price: 8999
       });
     }

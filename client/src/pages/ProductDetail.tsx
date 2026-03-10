@@ -210,28 +210,44 @@ export default function ProductDetail() {
                 Technical <span className="text-primary">Specifications</span>
               </h2>
               <div className="grid gap-4">
-                {[
-                  { label: "Model", value: product.name },
-                  { label: "Category", value: "Advanced Robotics System" },
-                  { label: "Dimensions", value: "Custom Configuration Available" },
-                  { label: "Weight", value: "Varies by Configuration" },
-                  { label: "Operating Voltage", value: "100-240V AC, 50-60Hz" },
-                  { label: "Warranty", value: "2 Years Standard + Extended Options" },
-                ].map((spec, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.05 }}
-                    className="grid md:grid-cols-3 gap-4 items-center p-4 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
-                  >
-                    <span className="font-semibold text-white text-sm uppercase tracking-wide">
-                      {spec.label}
-                    </span>
-                    <span className="md:col-span-2 text-gray-300">{spec.value}</span>
-                  </motion.div>
-                ))}
+                {Array.isArray(product.technicalSpecs) && product.technicalSpecs.length > 0
+                  ? product.technicalSpecs.map((spec, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.05 }}
+                        className="grid md:grid-cols-3 gap-4 items-center p-4 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+                      >
+                        <span className="font-semibold text-white text-sm uppercase tracking-wide">
+                          {spec.label}
+                        </span>
+                        <span className="md:col-span-2 text-gray-300">{spec.value}</span>
+                      </motion.div>
+                    ))
+                  : [
+                      { label: "Model", value: product.name },
+                      { label: "Category", value: "Advanced Robotics System" },
+                      { label: "Dimensions", value: "Custom Configuration Available" },
+                      { label: "Weight", value: "Varies by Configuration" },
+                      { label: "Operating Voltage", value: "100-240V AC, 50-60Hz" },
+                      { label: "Warranty", value: "2 Years Standard + Extended Options" },
+                    ].map((spec, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.05 }}
+                        className="grid md:grid-cols-3 gap-4 items-center p-4 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+                      >
+                        <span className="font-semibold text-white text-sm uppercase tracking-wide">
+                          {spec.label}
+                        </span>
+                        <span className="md:col-span-2 text-gray-300">{spec.value}</span>
+                      </motion.div>
+                    ))}
               </div>
             </div>
 

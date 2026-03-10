@@ -8,6 +8,7 @@ export const products = pgTable("products", {
   description: text("description").notNull(),
   imageUrls: jsonb("image_urls").$type<string[]>().notNull(),
   features: jsonb("features").$type<string[]>().notNull(),
+  technicalSpecs: jsonb("technical_specs").$type<{ label: string; value: string }[]>().notNull(),
   price: integer("price").notNull(),
 });
 
