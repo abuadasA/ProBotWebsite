@@ -97,7 +97,7 @@ export default function ProductDetail() {
 
               {/* Price Section */}
               <div className="mb-8 pb-8 border-b border-white/10">
-                <p className="text-sm text-gray-400 mb-2">STARTING PRICE</p>
+                {/* <p className="text-sm text-gray-400 mb-2">STARTING PRICE</p> */}
                 <div className="flex items-baseline gap-3">
                   <span className="text-4xl font-bold text-white">${(product.price || 0).toLocaleString()}</span>
                 </div>
@@ -146,7 +146,7 @@ export default function ProductDetail() {
               </div>
 
               {/* Trust Badges */}
-              <div className="p-4 rounded-xl bg-white/5 border border-white/10">
+              {/* <div className="p-4 rounded-xl bg-white/5 border border-white/10">
                 <p className="text-xs text-gray-400 uppercase tracking-wide font-semibold mb-3">
                   Why Choose This Product
                 </p>
@@ -164,7 +164,7 @@ export default function ProductDetail() {
                     <span>Global support and maintenance</span>
                   </li>
                 </ul>
-              </div>
+              </div> */}
             </motion.div>
           </div>
 
@@ -196,7 +196,7 @@ export default function ProductDetail() {
                       </div>
                       <div>
                         <h3 className="text-lg font-bold text-white mb-2">{feature.split(":")[0]}</h3>
-                        <p className="text-gray-400 text-sm">{feature.split(":")[1] || "Premium feature included"}</p>
+                        {/* <p className="text-gray-400 text-sm">{feature.split(":")[1] || "Premium feature included"}</p> */}
                       </div>
                     </div>
                   </motion.div>
