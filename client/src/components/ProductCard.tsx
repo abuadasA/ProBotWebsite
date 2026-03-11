@@ -33,7 +33,7 @@ export function ProductCard({ product }: { product: Product }) {
         />
         <div className="absolute bottom-4 left-4 z-20">
           <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold font-display uppercase tracking-wider backdrop-blur-md">
-            <Zap size={12} /> Series X
+            <Zap size={12} /> {product.category || "Product"}
           </span>
         </div>
       </div>

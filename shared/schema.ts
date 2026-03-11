@@ -2,6 +2,9 @@ import { pgTable, text, serial, jsonb, integer } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
+export const PRODUCT_CATEGORIES = ["Frame Kits", "Wheels", "Boards", "Full Robot Kits"] as const;
+export type ProductCategory = typeof PRODUCT_CATEGORIES[number];
+
 export const products = pgTable("products", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
@@ -9,6 +12,7 @@ export const products = pgTable("products", {
   imageUrls: jsonb("image_urls").$type<string[]>().notNull(),
   features: jsonb("features").$type<string[]>().notNull(),
   technicalSpecs: jsonb("technical_specs").$type<{ label: string; value: string }[]>().notNull(),
+  category: text("category"),
   price: integer("price").notNull(),
 });
 

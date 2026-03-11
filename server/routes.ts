@@ -64,6 +64,7 @@ export async function registerRoutes(
           { label: "Power Supply", value: "48 VDC, 150 A" },
           { label: "Weight", value: "45 kg" }
         ],
+        category: "Frame Kits",
         price: 24999
       });
       await storage.createProduct({
@@ -84,6 +85,7 @@ export async function registerRoutes(
           { label: "Weight", value: "75 kg" },
           { label: "LiDAR Range", value: "120 m" }
         ],
+        category: "Full Robot Kits",
         price: 18999
       });
       await storage.createProduct({
@@ -104,6 +106,7 @@ export async function registerRoutes(
           { label: "Battery Type", value: "LiPo 7500 mAh" },
           { label: "Weight", value: "1250 g" }
         ],
+        category: "Full Robot Kits",
         price: 12999
       });
       await storage.createProduct({
@@ -124,6 +127,7 @@ export async function registerRoutes(
           { label: "Sensors Included", value: "10x Digital, 4x Analog" },
           { label: "Programming Language", value: "Python 3.8+" }
         ],
+        category: "Boards",
         price: 8999
       });
     }
