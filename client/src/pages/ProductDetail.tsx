@@ -1,15 +1,26 @@
+import { useState } from "react";
 import { useRoute } from "wouter";
 import { useProducts } from "@/hooks/use-products";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ImageCarousel } from "@/components/ImageCarousel";
 import { motion } from "framer-motion";
-import { Activity, Zap, ArrowLeft, Check, Truck, Shield, RotateCcw } from "lucide-react";
+import { Activity, Zap, ArrowLeft, Check, Truck, RotateCcw, ShoppingCart, CheckCircle } from "lucide-react";
 import { Link } from "wouter";
+import { useCart } from "@/context/CartContext";
 
 export default function ProductDetail() {
   const [, params] = useRoute("/product/:id");
   const { data: products, isLoading } = useProducts();
+  const { addToCart } = useCart();
+  const [added, setAdded] = useState(false);
+
+  function handleAddToCart() {
+    if (!product) return;
+    addToCart(product);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 2000);
+  }
 
   const product = products?.find((p) => p.id === parseInt(params?.id || "0"));
 
@@ -127,22 +138,36 @@ export default function ProductDetail() {
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Link href="/contact" className="flex-1">
+                <motion.button
+                  data-testid="button-add-to-cart"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={handleAddToCart}
+                  className={`flex-1 px-8 py-4 font-bold text-lg rounded-xl transition-all uppercase tracking-wide flex items-center justify-center gap-2 ${
+                    added
+                      ? "bg-green-500 text-white"
+                      : "bg-primary text-black hover:bg-white box-glow"
+                  }`}
+                >
+                  {added ? (
+                    <>
+                      <CheckCircle size={20} /> Added to Cart!
+                    </>
+                  ) : (
+                    <>
+                      <ShoppingCart size={20} /> Add to Cart
+                    </>
+                  )}
+                </motion.button>
+                <Link href="/cart">
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full px-8 py-4 bg-primary text-black font-bold text-lg rounded-xl hover:bg-white transition-all box-glow uppercase tracking-wide"
+                    className="px-8 py-4 border-2 border-white/20 text-white font-bold rounded-xl hover:border-primary/50 transition-all uppercase tracking-wide"
                   >
-                    Request Quote
+                    View Cart
                   </motion.button>
                 </Link>
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-8 py-4 border-2 border-white/20 text-white font-bold rounded-xl hover:border-white/50 transition-all uppercase tracking-wide"
-                >
-                  Add to Wishlist
-                </motion.button>
               </div>
 
               {/* Trust Badges */}

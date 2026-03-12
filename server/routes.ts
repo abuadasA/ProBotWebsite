@@ -41,6 +41,22 @@ export async function registerRoutes(
     }
   });
 
+  app.post(api.orders.create.path, async (req, res) => {
+    try {
+      const input = api.orders.create.input.parse(req.body);
+      const order = await storage.createOrder(input);
+      res.status(201).json(order);
+    } catch (err) {
+      if (err instanceof z.ZodError) {
+        return res.status(400).json({
+          message: err.errors[0].message,
+          field: err.errors[0].path.join('.'),
+        });
+      }
+      throw err;
+    }
+  });
+
   // Seed data function
   async function seedData() {
     const existing = await storage.getProducts();

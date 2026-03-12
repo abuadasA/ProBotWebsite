@@ -2,11 +2,13 @@ import { Link, useLocation } from "wouter";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import logoImg from "@assets/Untitled-2_1769976217883.png";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ShoppingCart } from "lucide-react";
+import { useCart } from "@/context/CartContext";
 
 export function Navbar() {
   const [location] = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const { totalItems } = useCart();
 
   const links = [
     { href: "/", label: "Home" },
@@ -19,7 +21,7 @@ export function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          
+
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative">
@@ -30,14 +32,13 @@ export function Navbar() {
                            opacity-0 group-hover:opacity-40
                            transition-opacity duration-500"
               />
-              <img 
-                src={logoImg} 
-                alt="ProBot Logo" 
-                className="h-[150px] w-auto relative z-10 transition-transform duration-300 group-hover:scale-110" 
+              <img
+                src={logoImg}
+                alt="ProBot Logo"
+                className="h-[150px] w-auto relative z-10 transition-transform duration-300 group-hover:scale-110"
               />
             </div>
             <span className="text-2xl font-bold tracking-wider text-primary font-display transition-colors duration-300">
-              
             </span>
           </Link>
 
@@ -59,15 +60,44 @@ export function Navbar() {
                 )}
               </Link>
             ))}
-            <Link href="/contact" className="ml-4">
+
+            {/* Cart Icon */}
+            <Link href="/cart" data-testid="link-cart">
+              <div className="relative p-2 text-gray-300 hover:text-white transition-colors cursor-pointer">
+                <ShoppingCart size={22} />
+                {totalItems > 0 && (
+                  <motion.span
+                    key={totalItems}
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    className="absolute -top-1 -right-1 w-5 h-5 bg-primary text-black text-xs font-black rounded-full flex items-center justify-center"
+                    data-testid="text-cart-count"
+                  >
+                    {totalItems > 9 ? "9+" : totalItems}
+                  </motion.span>
+                )}
+              </div>
+            </Link>
+
+            <Link href="/contact" className="ml-2">
               <button className="px-6 py-2 bg-primary/10 border border-primary text-primary font-bold rounded hover:bg-primary hover:text-black transition-all duration-300 box-glow">
                 GET STARTED
               </button>
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          {/* Mobile: Cart + Menu */}
+          <div className="md:hidden flex items-center gap-3">
+            <Link href="/cart" data-testid="link-cart-mobile">
+              <div className="relative p-2 text-gray-300">
+                <ShoppingCart size={22} />
+                {totalItems > 0 && (
+                  <span className="absolute -top-1 -right-1 w-4 h-4 bg-primary text-black text-xs font-black rounded-full flex items-center justify-center">
+                    {totalItems > 9 ? "9+" : totalItems}
+                  </span>
+                )}
+              </div>
+            </Link>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-white hover:text-primary transition-colors"
@@ -80,7 +110,7 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
@@ -90,8 +120,8 @@ export function Navbar() {
             {links.map((link) => (
               <Link key={link.href} href={link.href} onClick={() => setIsOpen(false)}>
                 <div className={`block px-4 py-3 text-lg font-medium rounded-lg transition-colors ${
-                  location === link.href 
-                    ? "bg-primary/20 text-primary border border-primary/50" 
+                  location === link.href
+                    ? "bg-primary/20 text-primary border border-primary/50"
                     : "text-gray-300 hover:bg-white/5 hover:text-white"
                 }`}>
                   {link.label}

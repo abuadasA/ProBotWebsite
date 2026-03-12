@@ -9,7 +9,9 @@ import Products from "@/pages/Products";
 import ProductDetail from "@/pages/ProductDetail";
 import Contact from "@/pages/Contact";
 import About from "@/pages/About";
+import Cart from "@/pages/Cart";
 import NotFound from "@/pages/not-found";
+import { CartProvider } from "@/context/CartContext";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -27,6 +29,7 @@ function Router() {
       <Route path="/products" component={Products} />
       <Route path="/product/:id" component={ProductDetail} />
       <Route path="/contact" component={Contact} />
+      <Route path="/cart" component={Cart} />
       <Route component={NotFound} />
     </Switch>
   );
@@ -35,11 +38,13 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <ScrollToTop />
-        <Router />
-      </TooltipProvider>
+      <CartProvider>
+        <TooltipProvider>
+          <Toaster />
+          <ScrollToTop />
+          <Router />
+        </TooltipProvider>
+      </CartProvider>
     </QueryClientProvider>
   );
 }

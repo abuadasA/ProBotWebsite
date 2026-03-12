@@ -1,11 +1,12 @@
 import { db } from "./db";
-import { products, messages, type Product, type InsertProduct, type InsertMessage, type Message } from "@shared/schema";
+import { products, messages, orders, type Product, type InsertProduct, type InsertMessage, type Message, type Order, type InsertOrder } from "@shared/schema";
 
 export interface IStorage {
   getProducts(): Promise<Product[]>;
   getProduct(id: number): Promise<Product | undefined>;
   createProduct(product: InsertProduct): Promise<Product>;
   createMessage(message: InsertMessage): Promise<Message>;
+  createOrder(order: InsertOrder): Promise<Order>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -14,7 +15,7 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getProduct(id: number): Promise<Product | undefined> {
-    const [product] = await db.select().from(products).where({ id } as any); // Simplification for finding by ID
+    const [product] = await db.select().from(products).where({ id } as any);
     return product;
   }
 
@@ -26,6 +27,11 @@ export class DatabaseStorage implements IStorage {
   async createMessage(insertMessage: InsertMessage): Promise<Message> {
     const [message] = await db.insert(messages).values(insertMessage).returning();
     return message;
+  }
+
+  async createOrder(insertOrder: InsertOrder): Promise<Order> {
+    const [order] = await db.insert(orders).values(insertOrder).returning();
+    return order;
   }
 }
 

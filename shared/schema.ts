@@ -1,4 +1,4 @@
-import { pgTable, text, serial, jsonb, integer } from "drizzle-orm/pg-core";
+import { pgTable, text, serial, jsonb, integer, timestamp } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -23,10 +23,32 @@ export const messages = pgTable("messages", {
   message: text("message").notNull(),
 });
 
+export type OrderItem = {
+  productId: number;
+  productName: string;
+  quantity: number;
+  price: number;
+};
+
+export const orders = pgTable("orders", {
+  id: serial("id").primaryKey(),
+  customerName: text("customer_name").notNull(),
+  phone: text("phone").notNull(),
+  email: text("email"),
+  address: text("address").notNull(),
+  notes: text("notes"),
+  items: jsonb("items").$type<OrderItem[]>().notNull(),
+  totalPrice: integer("total_price").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
 export const insertProductSchema = createInsertSchema(products).omit({ id: true });
 export const insertMessageSchema = createInsertSchema(messages).omit({ id: true });
+export const insertOrderSchema = createInsertSchema(orders).omit({ id: true, createdAt: true });
 
 export type Product = typeof products.$inferSelect;
 export type InsertProduct = z.infer<typeof insertProductSchema>;
 export type Message = typeof messages.$inferSelect;
 export type InsertMessage = z.infer<typeof insertMessageSchema>;
+export type Order = typeof orders.$inferSelect;
+export type InsertOrder = z.infer<typeof insertOrderSchema>;
