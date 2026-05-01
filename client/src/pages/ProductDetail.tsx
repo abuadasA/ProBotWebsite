@@ -79,6 +79,7 @@ export default function ProductDetail() {
               transition={{ duration: 0.4 }}
               className="lg:sticky lg:top-32 lg:h-fit"
             >
+              
               <ImageCarousel images={productImages} productName={product.name} />
             </motion.div>
 
@@ -110,12 +111,12 @@ export default function ProductDetail() {
               <div className="mb-8 pb-8 border-b border-white/10">
                 {/* <p className="text-sm text-gray-400 mb-2">STARTING PRICE</p> */}
                 <div className="flex items-baseline gap-3">
-                  <span className="text-4xl font-bold text-white">${(product.price || 0).toLocaleString()}</span>
+                  <span className="text-4xl font-bold text-white">{(product.price || 0).toLocaleString()} JOD</span>
                 </div>
               </div>
 
               {/* Key Features Highlights */}
-              <div className="grid grid-cols-3 gap-4 mb-8 lg:mb-12">
+              <div className="grid grid-cols-2 gap-4 mb-8 lg:mb-12">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                     <Check size={18} className="text-primary" />
@@ -126,14 +127,14 @@ export default function ProductDetail() {
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                     <Truck size={18} className="text-primary" />
                   </div>
-                  <span className="text-sm font-medium text-gray-300">Free Shipping</span>
+                  <span className="text-sm font-medium text-gray-300">Shipping Available</span>
                 </div>
-                <div className="flex items-center gap-3">
+                {/* <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                     <RotateCcw size={18} className="text-primary" />
                   </div>
                   <span className="text-sm font-medium text-gray-300">30-Day Return</span>
-                </div>
+                </div> */}
               </div>
 
               {/* Action Buttons */}

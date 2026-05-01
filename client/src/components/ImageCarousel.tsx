@@ -24,7 +24,7 @@ export function ImageCarousel({ images, productName }: ImageCarouselProps) {
   return (
     <div className="w-full">
       {/* Main Image Display */}
-      <div className="relative bg-gradient-to-br from-white/5 to-white/2 rounded-2xl overflow-hidden aspect-square lg:aspect-[4/5] border border-white/10">
+     <div className="relative bg-gradient-to-br from-white/5 to-white/2 rounded-2xl overflow-hidden aspect-square border border-white/10">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentIndex}

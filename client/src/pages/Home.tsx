@@ -204,7 +204,7 @@ useEffect(() => {
           <div className="flex justify-between items-end mb-16">
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-white font-display mb-4">FEATURED <span className="text-primary">PRODUCTS</span></h2>
-              <p className="text-gray-400 max-w-xl">Discover our flagship autonomous units designed for heavy industrial applications.</p>
+              <p className="text-gray-400 max-w-xl">Browse our robotics kits, components, and development boards built to teach, create, and turn ideas into real projects.</p>
             </div>
             <Link href="/products" className="hidden md:flex items-center gap-2 text-primary hover:text-white transition-colors uppercase font-bold tracking-widest text-sm">
               View All Products <ArrowRight size={16} />

@@ -29,7 +29,7 @@ export function ProductCard({ product }: { product: Product }) {
         <img 
           src={primaryImage} 
           alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 "
         />
         <div className="absolute bottom-4 left-4 z-20">
           <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold font-display uppercase tracking-wider backdrop-blur-md">
@@ -49,7 +49,7 @@ export function ProductCard({ product }: { product: Product }) {
 
         {/* Price */}
         <div className="mb-4">
-          <p className="text-xl font-bold text-primary">${(product.price || 0).toLocaleString()}</p>
+          <p className="text-xl font-bold text-primary">{(product.price || 0).toLocaleString()} JOD</p>
         </div>
 
         {/* Features Preview */}
