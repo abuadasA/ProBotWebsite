@@ -12,7 +12,7 @@ export default function About() {
     {
       name: "Mohammad Abu Adas",
       role: "Co-Founder",
-      linkedin: "https://www.linkedin.com/in/mohammad-abu-adas/",
+      linkedin: "https://www.linkedin.com/in/mohammad-abu-adas-821bab233/",
       image:profile1,
         
     },
@@ -20,7 +20,7 @@ export default function About() {
       name: "Mahdy Naji",
       role: "Co-Founder",
       
-      linkedin: "https://www.linkedin.com/in/mahdy-naji/",
+      linkedin: "https://www.linkedin.com/in/mahdy-naji-27a846189/",
       image:profile2,
     },
   ];

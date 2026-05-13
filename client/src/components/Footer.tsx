@@ -1,6 +1,12 @@
 import { Link } from "wouter";
-import logoImg from "@assets/Untitled-2-01_1769976613929.png";
-import { FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa";
+import logoImg from "@assets/Untitled-2_1769976217883.png";
+import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
+
+const socials = [
+  { icon: FaInstagram, link: "https://www.instagram.com/probot.jo/" },
+  { icon: FaFacebook, link: "https://www.facebook.com/profile.php?id=61577397383764" },
+  { icon: FaLinkedin, link: "https://www.linkedin.com/company/probotjo/" },
+];
 
 export function Footer() {
   return (
@@ -9,29 +15,41 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           
           <div className="col-span-1 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-6 group cursor-pointer">
-              <img src={logoImg} alt="ProBot" className="h-10 w-auto opacity-90 group-hover:opacity-100 transition-opacity" />
-              <span className="text-xl font-bold font-display tracking-widest text-white">PROBOT</span>
-            </Link>
+            <Link href="/" className="flex items-center gap-2 h-16 mb-6 group cursor-pointer">
+              <img 
+                src={logoImg} 
+                alt="ProBot" 
+                className="h-[180px] w-auto opacity-90 group-hover:opacity-100 transition-opacity" 
+              />
+          </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
-              Pioneering the future of automation with advanced robotics solutions designed for industrial excellence and precision.
+              Empowering the next generation of robotics champions with advanced kits, innovative components, and hands-on training.
             </p>
             <div className="flex gap-4">
-              {[FaGithub, FaTwitter, FaLinkedin].map((Icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-black transition-all duration-300">
-                  <Icon size={18} />
-                </a>
-              ))}
+              {socials.map((item, i) => {
+                const Icon = item.icon;
+                return (
+                  <a
+                    key={i}
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-black transition-all duration-300"
+                  >
+                    <Icon size={18} />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
           <div>
             <h4 className="text-white font-bold mb-6 font-display">Products</h4>
             <ul className="space-y-3 text-gray-400">
-              <li><Link href="/products" className="hover:text-primary transition-colors">Industrial Arms</Link></li>
-              <li><Link href="/products" className="hover:text-primary transition-colors">Autonomous Units</Link></li>
-              <li><Link href="/products" className="hover:text-primary transition-colors">Vision Systems</Link></li>
-              <li><Link href="/products" className="hover:text-primary transition-colors">Control Software</Link></li>
+              <li><Link href="/products" className="hover:text-primary transition-colors">Complete kits</Link></li>
+              <li><Link href="/products" className="hover:text-primary transition-colors">Frame Kits</Link></li>
+              <li><Link href="/products" className="hover:text-primary transition-colors">Boards</Link></li>
+              <li><Link href="/products" className="hover:text-primary transition-colors">Wheels</Link></li>
             </ul>
           </div>
 
@@ -40,7 +58,7 @@ export function Footer() {
             <ul className="space-y-3 text-gray-400">
               <li><Link href="/" className="hover:text-primary transition-colors">About Us</Link></li>
               <li><Link href="/contact" className="hover:text-primary transition-colors">Careers</Link></li>
-              <li><Link href="/contact" className="hover:text-primary transition-colors">Press</Link></li>
+              {/* <li><Link href="/contact" className="hover:text-primary transition-colors">Press</Link></li> */}
               <li><Link href="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
             </ul>
           </div>

@@ -31,7 +31,7 @@ export default function Products() {
       <Navbar />
 
       {/* Header */}
-      <div className="pt-32 pb-16 bg-gradient-to-b from-card to-background relative overflow-hidden">
+      <div className="pt-32 pb-8 bg-gradient-to-b from-card to-background relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10" />
         <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.h1
@@ -39,14 +39,13 @@ export default function Products() {
             animate={{ opacity: 1, y: 0 }}
             className="text-5xl md:text-7xl font-black font-display text-white mb-6 uppercase tracking-tight"
           >
-            Our{" "}
+            Our {""}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-white">
-              Fleet
+              Products 
             </span>
           </motion.h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Explore our cutting-edge robotics solutions engineered for
-            performance, precision, and autonomous operation.
+          Advanced robotics products engineered for innovation, hands-on learning, and competitive performance.
           </p>
         </div>
       </div>

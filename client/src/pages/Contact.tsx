@@ -49,13 +49,13 @@ export default function Contact() {
               <h1 className="text-5xl md:text-6xl font-black font-display text-white mb-8">
                 GET IN <span className="text-primary">TOUCH</span>
               </h1>
-              <p className="text-xl text-gray-400 mb-12 leading-relaxed">
+              {/* <p className="text-xl text-gray-400 mb-12 leading-relaxed">
                 Ready to automate your future? Our team of engineers is standing by to discuss your specific requirements and deployment needs.
-              </p>
+              </p> */}
 
               <div className="space-y-8">
                 <a 
-                  href="https://wa.me/1234567890" 
+                  href="https://wa.me/962782551926" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center gap-6 p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 hover:bg-white/10 transition-all duration-300 group"
@@ -83,15 +83,20 @@ export default function Contact() {
                 </a>
 
                 <div className="grid grid-cols-2 gap-4 mt-8">
-                  <div className="p-4 rounded-xl bg-card border border-white/5">
+                  {/* <div className="p-4 rounded-xl bg-card border border-white/5">
                     <FaMapMarkerAlt className="text-primary mb-2" size={20} />
                     <h4 className="font-bold text-white">Headquarters</h4>
                     <p className="text-sm text-gray-400">123 Tech Blvd, Silicon Valley, CA</p>
+                  </div> */}
+                  <div className="p-4 rounded-xl bg-card border border-white/5">
+                    <FaPhone className="text-primary mb-2" size={20} />
+                    <h4 className="font-bold text-white">Phone</h4>
+                    <p className="text-sm text-gray-400">+962 7 8255 1926</p>
                   </div>
                   <div className="p-4 rounded-xl bg-card border border-white/5">
                     <FaPhone className="text-primary mb-2" size={20} />
                     <h4 className="font-bold text-white">Phone</h4>
-                    <p className="text-sm text-gray-400">+1 (555) 123-4567</p>
+                    <p className="text-sm text-gray-400">+962 7 7007 1058</p>
                   </div>
                 </div>
               </div>
@@ -118,7 +123,7 @@ export default function Contact() {
                         <FormLabel className="text-gray-300">Full Name</FormLabel>
                         <FormControl>
                           <Input 
-                            placeholder="John Doe" 
+                            placeholder="Name" 
                             {...field} 
                             className="bg-black/30 border-white/10 focus:border-primary h-12 text-white"
                           />
@@ -136,7 +141,7 @@ export default function Contact() {
                         <FormLabel className="text-gray-300">Email Address</FormLabel>
                         <FormControl>
                           <Input 
-                            placeholder="john@company.com" 
+                            placeholder="name@company.com" 
                             type="email"
                             {...field} 
                             className="bg-black/30 border-white/10 focus:border-primary h-12 text-white"
