@@ -121,7 +121,7 @@ export default function ProductDetail() {
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                     <Check size={18} className="text-primary" />
                   </div>
-                  <span className="text-sm font-medium text-gray-300">In Stock</span>
+                  <span className="text-sm font-medium text-gray-300"> {product.stock}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">

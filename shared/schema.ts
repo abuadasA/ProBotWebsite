@@ -14,6 +14,7 @@ export const products = pgTable("products", {
   technicalSpecs: jsonb("technical_specs").$type<{ label: string; value: string }[]>().notNull(),
   category: text("category"),
   price: integer("price").notNull(),
+  stock: text("Stock").notNull(),
 });
 
 export const messages = pgTable("messages", {
