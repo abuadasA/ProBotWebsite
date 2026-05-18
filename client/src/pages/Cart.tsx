@@ -165,7 +165,7 @@ export default function Cart() {
                         </p>
                       )}
                       <p data-testid={`price-${item.product.id}`} className="text-gray-300 font-semibold">
-                        ${(item.product.price * item.quantity).toLocaleString()}
+                        {(item.product.price * item.quantity).toLocaleString()} JOD
                       </p>
                     </div>
 
@@ -218,7 +218,7 @@ export default function Cart() {
                         {item.product.name} × {item.quantity}
                       </span>
                       <span className="text-white whitespace-nowrap">
-                        ${(item.product.price * item.quantity).toLocaleString()}
+                        {(item.product.price * item.quantity).toLocaleString()} JOD
                       </span>
                     </div>
                   ))}
@@ -226,7 +226,7 @@ export default function Cart() {
                 <div className="border-t border-white/10 pt-4 flex justify-between items-center">
                   <span className="text-white font-bold">Total</span>
                   <span data-testid="text-total-price" className="text-primary text-xl font-black">
-                    ${totalPrice.toLocaleString()}
+                    {totalPrice.toLocaleString()} JOD
                   </span>
                 </div>
               </div>

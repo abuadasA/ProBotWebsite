@@ -2,7 +2,7 @@ import { pgTable, text, serial, jsonb, integer, timestamp } from "drizzle-orm/pg
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
-export const PRODUCT_CATEGORIES = ["Frame Kits", "Wheels", "Boards", "Full Robot Kits"] as const;
+export const PRODUCT_CATEGORIES = ["Frame Kits", "Full Robot Kits", "Wheels", "Boards","Blades"] as const;
 export type ProductCategory = typeof PRODUCT_CATEGORIES[number];
 
 export const products = pgTable("products", {

@@ -98,9 +98,9 @@ export default function ProductDetail() {
               </div>
 
               {/* Title */}
-              <h1 className="text-4xl lg:text-5xl font-black font-display text-white mb-4 leading-tight">
+             <h1 className="text-4xl lg:text-5xl font-bold font-display text-white mb-4 leading-tight normal-case">
                 {product.name}
-              </h1>
+             </h1>
 
               {/* Description */}
               <p className="text-lg text-gray-300 leading-relaxed mb-8">
@@ -127,7 +127,7 @@ export default function ProductDetail() {
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                     <Truck size={18} className="text-primary" />
                   </div>
-                  <span className="text-sm font-medium text-gray-300">Shipping Available</span>
+                  <span className="text-sm font-medium text-gray-300">Delivery Available</span>
                 </div>
                 {/* <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
@@ -278,7 +278,7 @@ export default function ProductDetail() {
             </div>
 
             {/* Support & Resources */}
-            <div className="border-t border-white/10 pt-16 border-b pb-16">
+            {/* <div className="border-t border-white/10 pt-16 border-b pb-16">
               <h2 className="text-3xl lg:text-4xl font-black font-display text-white mb-12">
                 Support & <span className="text-primary">Resources</span>
               </h2>
@@ -308,7 +308,7 @@ export default function ProductDetail() {
                   <p className="text-gray-400 text-sm">24/7 technical support team</p>
                 </motion.div>
               </div>
-            </div>
+            </div> */}
           </motion.div>
 
           {/* Final CTA */}

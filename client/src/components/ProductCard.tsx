@@ -40,7 +40,7 @@ export function ProductCard({ product }: { product: Product }) {
 
       {/* Content */}
       <div className="p-6 relative z-10 flex flex-col">
-        <h3 className="text-2xl font-bold text-white font-display mb-2 group-hover:text-primary transition-colors">
+        <h3 className="text-2xl font-bold text-white font-display mb-2 group-hover:text-primary transition-colors normal-case">
           {product.name}
         </h3>
         <p className="text-gray-400 text-sm mb-4 line-clamp-2 h-10">
