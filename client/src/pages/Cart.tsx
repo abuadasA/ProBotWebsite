@@ -243,7 +243,7 @@ export default function Cart() {
                     <input
                       data-testid="input-customer-name"
                       {...register("customerName")}
-                      placeholder="John Smith"
+                      placeholder="Name"
                       className="w-full px-4 py-3 bg-black/30 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:border-primary/50 text-sm"
                     />
                     {errors.customerName && (
@@ -259,7 +259,7 @@ export default function Cart() {
                     <input
                       data-testid="input-phone"
                       {...register("phone")}
-                      placeholder="+1 555 000 0000"
+                      placeholder="+962 7 0000 0000"
                       className="w-full px-4 py-3 bg-black/30 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:border-primary/50 text-sm"
                     />
                     {errors.phone && (
@@ -275,7 +275,7 @@ export default function Cart() {
                     <input
                       data-testid="input-email"
                       {...register("email")}
-                      placeholder="john@example.com"
+                      placeholder="name@example.com"
                       className="w-full px-4 py-3 bg-black/30 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:border-primary/50 text-sm"
                     />
                     {errors.email && (
@@ -291,7 +291,7 @@ export default function Cart() {
                     <textarea
                       data-testid="input-address"
                       {...register("address")}
-                      placeholder="123 Main St, City, Country"
+                      placeholder="Address"
                       rows={2}
                       className="w-full px-4 py-3 bg-black/30 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:border-primary/50 text-sm resize-none"
                     />

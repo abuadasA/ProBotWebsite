@@ -111,7 +111,9 @@ export default function ProductDetail() {
               <div className="mb-8 pb-8 border-b border-white/10">
                 {/* <p className="text-sm text-gray-400 mb-2">STARTING PRICE</p> */}
                 <div className="flex items-baseline gap-3">
-                  <span className="text-4xl font-bold text-white">{(product.price || 0).toLocaleString()} JOD</span>
+                <span className="text-4xl font-bold text-[#0cf35d]">
+                  {(product.price || 0).toLocaleString()} JOD
+                </span>
                 </div>
               </div>
 

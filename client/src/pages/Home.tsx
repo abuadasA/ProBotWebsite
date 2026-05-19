@@ -219,9 +219,11 @@ useEffect(() => {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {products?.slice(0, 3).map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
+              {products
+                ?.filter((p) => [1, 2, 3].includes(p.id))
+                .map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
             </div>
           )}
           
