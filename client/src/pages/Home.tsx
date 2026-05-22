@@ -6,9 +6,9 @@ import { Link } from "wouter";
 import { ArrowRight, Cpu, Globe, Shield, Zap } from "lucide-react";
 import { useProducts } from "@/hooks/use-products";
 import { ProductCard } from "@/components/ProductCard";
-import logoImg from "@assets/heroimage.png";
-import logoImg2 from "@assets/heroimage1.png";
-import logoImg3 from "@assets/heroimage3.png";
+//import logoImg from "@assets/heroimage.png";
+//import logoImg2 from "@assets/IMG_3330.png";
+//import logoImg3 from "@assets/heroimage3.png";
 
 import reel1 from "../reels/reel1.mp4"
 import reel2 from "../reels/reel2.mp4"
@@ -88,9 +88,9 @@ useEffect(() => {
             animate={{ x: `-${active * 100}vw` }}
             transition={{ duration: 1, ease: "easeInOut" }}
           >
-            <img src={logoImg3} className="w-screen h-full object-cover" />
-            <img src={logoImg}  className="w-screen h-full object-cover object-top" />
-            <img src={logoImg2} className="w-screen h-full object-cover object-center" />
+            <img src= "https://res.cloudinary.com/doelgb16f/image/upload/v1779475968/heroimage_m3zpjp.png" className="w-screen h-full object-cover" />
+            <img src= "https://res.cloudinary.com/doelgb16f/image/upload/v1779475971/heroimage3_ilmxkn.png" className="w-screen h-full object-cover object-top" />
+            <img src= "https://res.cloudinary.com/doelgb16f/image/upload/v1779475549/IMG_3330_ubx3ia.png" className="w-screen h-full object-cover object-center" />
          
 
           </motion.div>
