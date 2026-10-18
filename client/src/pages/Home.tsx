@@ -70,8 +70,8 @@ const [active, setActive] = useState(0);
 
 useEffect(() => {
   const interval = setInterval(() => {
-    setActive((prev) => (prev + 1) % 3);
-  }, 3000);
+    setActive((prev) => (prev + 1) % 5);
+  }, 2500);
 
   return () => clearInterval(interval);
 }, []);
@@ -88,11 +88,12 @@ useEffect(() => {
             animate={{ x: `-${active * 100}vw` }}
             transition={{ duration: 1, ease: "easeInOut" }}
           >
+            <img src= "https://res.cloudinary.com/doelgb16f/image/upload/v1792354335/DSC00660_oekzye.jpg" className="w-screen h-full object-cover" />
+            <img src= "https://res.cloudinary.com/doelgb16f/image/upload/v1792354187/_DSC0077_tmmefa.jpg" className="w-screen h-full object-cover" />
+            <img src= "https://res.cloudinary.com/doelgb16f/image/upload/v1792354181/_DSC0060_fdyxfk.jpg" className="w-screen h-full object-cover" />
             <img src= "https://res.cloudinary.com/doelgb16f/image/upload/v1779475968/heroimage_m3zpjp.png" className="w-screen h-full object-cover" />
             <img src= "https://res.cloudinary.com/doelgb16f/image/upload/v1779475971/heroimage3_ilmxkn.png" className="w-screen h-full object-cover object-top" />
-            <img src= "https://res.cloudinary.com/doelgb16f/image/upload/v1779475549/IMG_3330_ubx3ia.png" className="w-screen h-full object-cover object-center" />
-         
-
+           
           </motion.div>
 
           {/* Overlay */}
